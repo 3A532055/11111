@@ -16,6 +16,7 @@ class UserTableSeeder extends Seeder
             'name'=>'管理者',
             'email'=>'admin@mail.com',
             'password'=>bcrypt('admin'),
+            'type'=>1
         ]);
     }
 }
