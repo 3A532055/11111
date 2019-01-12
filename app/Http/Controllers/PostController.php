@@ -35,6 +35,34 @@ class PostController extends Controller
         return View::make('post.index',['posts'=>$posts,'post_types'=>$post_types]);
     }
 
+    public function create()
+    {
 
+    }
+
+    public function store()
+    {
+
+    }
+
+    public function show()
+    {
+
+    }
+
+    public function edit()
+    {
+
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function destroy($id)
+    {
+
+    }
 
 }
