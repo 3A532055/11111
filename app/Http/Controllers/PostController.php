@@ -10,6 +10,7 @@ use App\Http\Requests;
 
 use App\Post as PostEloquent;
 use App\PostType as PostTypeEloquent;
+use App\Comment as CommentEloquent;
 
 use \Carbon\Carbon as Carbon;
 
@@ -52,7 +53,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = PostEloquent::findOrFail($id);
-        return View::make('post.show',['post'=>$post]);
+        $comments = CommentEloquent::where('post_id',$post->id)->orderBy('created_at','DESC')->paginate(5);
+        return View::make('post.show',['post'=>$post,'comments'=>$comments]);
     }
 
     public function edit($id)
