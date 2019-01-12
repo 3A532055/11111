@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Requests;
-use App\Http\Requests\Request;
+
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 use Auth;
 
-class PostRequest extends Request
+class PostTypeRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +26,7 @@ class PostRequest extends Request
     public function rules()
     {
         return [
-            'title'=>'required|string',
-            'type'=>'required|integer',
-            'content'=>'required|string'
+            'name' => 'required|string'
         ];
     }
 }
