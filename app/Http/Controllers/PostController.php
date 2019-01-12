@@ -45,9 +45,10 @@ class PostController extends Controller
 
     }
 
-    public function show()
+    public function show($id)
     {
-
+        $post = PostEloquent::findOrFail($id);
+        return View::make('post.show',['post'=>$post]);
     }
 
     public function edit()
