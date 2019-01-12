@@ -16,7 +16,7 @@ use Redirect;
 class PostTypeController extends Controller
 {
     public function __construct(){
-        $this->middleware(['auth'], ['except' => ['show']]);
+        $this->middleware(['auth','admin'], ['except' => ['show']]);
     }
 
     public function create()
