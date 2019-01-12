@@ -88,7 +88,7 @@
                                         @if(Auth::check())
                                             @if(Auth::user()->id == $post->user_id )
                                                 <form method="POST" action="{{ route('post.destroy',['post'=>$post->id]) }}">
-
+                                                    <span>{{ $post->comments->count() }}&nbsp;則留言</span>
                                                     <span style="padding-left: 10px;">
                                                     <a class="btn btn-xs btn-primary" href="{{ route('post.edit',['post'=>$post->id]) }}">
                                                         <i class="glyphicon glyphicon-pencil"></i>
