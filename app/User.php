@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -27,4 +27,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin(){
+        return ($this->type == 1);
+    }
+
+    public function getAvatarUrl(){
+        if(empty($this->avatar)){
+            return URL::asset('img/avatar/default.png');
+        }else{
+            if(!preg_match("/^[a-zA-z]+:\/\//", $this->avatar)){
+                return URL::asset($this->avatar);
+            }else{
+                return $this->avatar;
+            }
+        }
+    }
 }
