@@ -4,17 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Post as PostEloquent;
+use App\PostType as PostTypeEloquent;
+
+use Request;
+use Redirect;
+use View;
+
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -23,6 +21,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return Redirect::action('PostController@index');
+    }
+
+    public function search(){
+        if(!Request::has('keyword')){
+            return Redirect::back();
+        }
+        $keyword = Request::get('keyword');
+        $posts = PostEloquent::where('title','LIKE',"%$keyword%")->orderBy('created_at','DESC')->paginate(5);
+        $post_types = PostTypeEloquent::orderBy('name','ASC')->get();
+        return View::make('post.index',['posts'=>$posts,'post_types'=>$post_types,'keyword'=>$keyword]);
     }
 }
