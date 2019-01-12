@@ -37,12 +37,16 @@ class PostController extends Controller
 
     public function create()
     {
-
+        $post_types=PostTypeEloquent::orderBy('name','ASC')->get();
+        return View::make('post.create',['post_types'=>$post_types]);
     }
 
-    public function store()
+    public function store(PostRequest $request)
     {
-
+        $post = new PostEloquent($request->all());
+        $post->user_id = Auth::user()->id;
+        $post->save();
+        return Redirect::route('post.index');
     }
 
     public function show($id)
