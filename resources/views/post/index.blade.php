@@ -16,7 +16,30 @@
                             </div>
                     @endif
 
-                    @if(isset($keyword))
+                    @if(isset($type))
+                        分類：{{ $type->name }}
+                        @if(Auth::check())
+                            <div class="pull-right">
+                                <form method="POST" action="{{ route('type.destroy',['type'=>$type->id]) }}">
+                                <span style="margin-left: 10px;">
+                                {{ csrf_field() }}
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button type="submit" class="btn btn-xs btn-danger">
+                                         <i class="glyphicon glyphicon-trash"></i>
+                                         <span style="padding-left: 5px;">刪除分類</span>
+                                    </button>
+                                </span>
+                                </form>
+                            </div>
+                            <div class="pull-right">
+                                <a class="btn btn-xs btn-primary" href="{{ route('type.edit',['type'=>$type->id]) }}" style="margin-left: 10px;">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                    <span style="padding-left: 5px;">編輯分類</span>
+                                </a>
+                            </div>
+                         @endif
+
+                    @elseif(isset($keyword))
                         搜尋：{{ $keyword }}
                     @else
                         所有評論
@@ -56,7 +79,6 @@
                                 <div class="row" style="margin-top:10px;">
                                     <div class="col-md-8">
                                         @if(Auth::check())
-
                                                 <form method="POST" action="{{ route('post.destroy',['post'=>$post->id]) }}">
 
                                                     <span style="padding-left: 10px;">
@@ -85,6 +107,22 @@
                 @endforeach
             </div>
         </div>
+
+        <div class="col-xs-4">
+            <div class="list-group">
+                <a href="{{ route('post.index') }}" class="list-group-item {{ (isset($type))?'':'active' }}">全部店家分類</a>
+                @foreach ($post_types as $post_type)
+                    <a href="{{ route('type.show',['type'=>$post_type->id]) }}" class="list-group-item {{ (isset($type))?(($type->id == $post_type->id)?'active':''):'' }}">
+                        {{ $post_type->name }}
+                    </a>
+                @endforeach
+                @if(Auth::check())
+                    <a href="{{ route('type.create') }}" class="list-group-item">建立店家分類</a>
+                @endif
+            </div>
+        </div>
+    </div>
+
         <div class="row">
             <div class="col-xs-8">
                 @if(isset($keyword))

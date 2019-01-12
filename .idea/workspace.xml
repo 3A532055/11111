@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58fd7de5-410d-4729-aa38-8ee6172e0ca2" name="Default" comment="" />
+    <list default="true" id="58fd7de5-410d-4729-aa38-8ee6172e0ca2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/post/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/post/index.blade.php" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +36,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="edit.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/post/edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1872">
@@ -42,6 +45,18 @@
                 <element signature="e#448#466#0#HTML" expanded="true" />
                 <element signature="e#502#526#0#HTML" expanded="true" />
                 <element signature="e#2327#2352#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/post/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-611">
+              <caret line="80" column="58" lean-forward="false" selection-start-line="80" selection-start-column="58" selection-end-line="80" selection-end-column="58" />
+              <folding>
+                <element signature="e#1897#1923#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,13 +83,13 @@
         <option value="$PROJECT_DIR$/resources/views/partials/nav.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/post/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/views/post/show.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/PostRequest.php" />
         <option value="$PROJECT_DIR$/resources/views/post/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PostController.php" />
         <option value="$PROJECT_DIR$/resources/views/post/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/post/index.blade.php" />
       </list>
     </option>
   </component>
@@ -204,12 +219,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1547280482734</updated>
-      <workItem from="1547280488465" duration="8014000" />
+      <workItem from="1547280488465" duration="9066000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8014000" />
+    <option name="totallyTimeSpent" value="9066000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -412,26 +427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/post/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1144">
-          <caret line="96" column="10" lean-forward="true" selection-start-line="96" selection-start-column="10" selection-end-line="96" selection-end-column="10" />
-          <folding>
-            <element signature="e#376#402#0#HTML" expanded="true" />
-            <element signature="e#523#549#0#HTML" expanded="true" />
-            <element signature="e#1238#1256#0#HTML" expanded="true" />
-            <element signature="e#1412#1433#0#HTML" expanded="true" />
-            <element signature="e#1780#1805#0#HTML" expanded="true" />
-            <element signature="e#2199#2221#0#HTML" expanded="true" />
-            <element signature="e#2334#2371#0#HTML" expanded="true" />
-            <element signature="e#2565#2589#0#HTML" expanded="true" />
-            <element signature="e#2895#2922#0#HTML" expanded="true" />
-            <element signature="e#3224#3250#0#HTML" expanded="true" />
-            <element signature="e#3771#3797#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -522,6 +517,16 @@
             <element signature="e#448#466#0#HTML" expanded="true" />
             <element signature="e#502#526#0#HTML" expanded="true" />
             <element signature="e#2327#2352#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/post/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-611">
+          <caret line="80" column="58" lean-forward="false" selection-start-line="80" selection-start-column="58" selection-end-line="80" selection-end-column="58" />
+          <folding>
+            <element signature="e#1897#1923#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
