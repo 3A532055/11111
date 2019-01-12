@@ -106,7 +106,7 @@
                     </div>
                 @endforeach
             </div>
-        </div>
+
 
         <div class="col-xs-4">
             <div class="list-group">
