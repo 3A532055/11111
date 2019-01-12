@@ -10,3 +10,6 @@ Route::get('logout','Auth\AuthController@logout');
 
 Route::resource('post', 'PostController');
 Route::resource('type', 'PostTypeController', ['except' => ['index']]);
+
+Route::auth();
+
