@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Post as PostEloquent;
 use App\PostType as PostTypeEloquent;
 
-use Request;
+
 use Redirect;
 use View;
 
