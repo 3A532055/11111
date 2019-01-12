@@ -38,18 +38,25 @@ class PostTypeController extends Controller
         return View::make('post.index',['posts'=>$posts,'post_types'=>$post_types,'type'=>$type]);
     }
 
-    public function edit()
+    public function edit($id)
     {
-
+        $post_type = PostTypeEloquent::findOrFail($id);
+        return View::make('posttype.edit',['post_type'=>$post_type]);
     }
 
-    public function update()
+    public function update(PostTypeRequest $request, $id)
     {
-
+        $post_type = PostTypeEloquent::findOrFail($id);
+        $post_type->fill($request->only('name'));
+        $post_type->save();
+        return Redirect::route('post.index');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-
+        $post_type = PostTypeEloquent::findOrFail($id);
+        $post_type -> posts() -> delete();
+        $post_type -> delete();
+        return Redirect::route('post.index');
     }
 }
