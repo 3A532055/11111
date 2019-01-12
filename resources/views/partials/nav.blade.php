@@ -9,6 +9,11 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
             @if(Auth::check())
+                <li>
+                    <a href="{{ action('UserController@getAvatar') }}" style="padding:10px 0;">
+                        <img src="{{ Auth::user()->getAvatarUrl() }}" style="width:30px;height:30px;" class="img-circle" />
+                    </a>
+                </li>
                 <li class="navbar-text">
                     {{ Auth::user()->name }}
                 </li>
