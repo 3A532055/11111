@@ -21,17 +21,21 @@ class PostTypeController extends Controller
 
     public function create()
     {
-
+        return View::make('posttype.create');
     }
 
-    public function store()
+    public function store(PostTypeRequest $request)
     {
-
+        PostTypeEloquent::create($request->only('name'));
+        return Redirect::route('post.index');
     }
 
-    public function show($id)
+    public function show($type_id)
     {
-
+        $type = PostTypeEloquent::findOrFail($type_id);
+        $posts = PostEloquent::where('type',$type_id)->orderBy('created_at','DESC')->paginate(5);
+        $post_types = PostTypeEloquent::orderBy('name','ASC')->get();
+        return View::make('post.index',['posts'=>$posts,'post_types'=>$post_types,'type'=>$type]);
     }
 
     public function edit()
