@@ -17,7 +17,7 @@
                             </div>
                         @endif
                         <div class="row">
-                            <form method="POST" action="{{ action('Auth\AuthController@login') }}" style="padding:20px;">
+                            <form method="POST" action="{{ url('/login') }}" style="padding:20px;">
                                 {{ csrf_field() }}
                                 <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                                     <label for="email">信箱</label>

@@ -13,14 +13,14 @@
                     {{ Auth::user()->name }}
                 </li>
                 <li>
-                    <a href="{{ action('Auth\AuthController@logout') }}">登出</a>
+                    <a href="{{ route('logout') }}">登出</a>
                 </li>
             @else
                 <li>
-                    <a href="{{ action('Auth\AuthController@showLoginForm') }}">登入</a>
+                    <a href="{{ route('login') }}">登入</a>
                 </li>
                 <li>
-                    <a href="{{ action('Auth\AuthController@showRegistrationForm') }}">註冊</a>
+                    <a href="{{ route('register') }}">註冊</a>
                 </li>
             @endif
         </ul>
