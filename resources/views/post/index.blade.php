@@ -8,35 +8,39 @@
             <div class="col-xs-8">
                 <h4>
                     @if(Auth::check())
+                        @if(Auth::user()->id)
                             <div class="pull-right">
                                 <a class="btn btn-xs btn-default" href="{{ route('post.create') }}" style="margin-left: 20px;">
                                     <i class="glyphicon glyphicon-plus"></i>
                                     <span style="padding-left: 5px;">新增評論</span>
                                 </a>
                             </div>
+                        @endif
                     @endif
 
                     @if(isset($type))
                         分類：{{ $type->name }}
                         @if(Auth::check())
-                            <div class="pull-right">
-                                <form method="POST" action="{{ route('type.destroy',['type'=>$type->id]) }}">
-                                <span style="margin-left: 10px;">
-                                {{ csrf_field() }}
-                                    <input type="hidden" name="_method" value="DELETE" />
-                                    <button type="submit" class="btn btn-xs btn-danger">
-                                         <i class="glyphicon glyphicon-trash"></i>
-                                         <span style="padding-left: 5px;">刪除分類</span>
-                                    </button>
-                                </span>
-                                </form>
-                            </div>
-                            <div class="pull-right">
-                                <a class="btn btn-xs btn-primary" href="{{ route('type.edit',['type'=>$type->id]) }}" style="margin-left: 10px;">
-                                    <i class="glyphicon glyphicon-pencil"></i>
-                                    <span style="padding-left: 5px;">編輯分類</span>
-                                </a>
-                            </div>
+                            @if(Auth::user()->isAdmin())
+                                <div class="pull-right">
+                                    <form method="POST" action="{{ route('type.destroy',['type'=>$type->id]) }}">
+                                    <span style="margin-left: 10px;">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="_method" value="DELETE" />
+                                        <button type="submit" class="btn btn-xs btn-danger">
+                                            <i class="glyphicon glyphicon-trash"></i>
+                                            <span style="padding-left: 5px;">刪除分類</span>
+                                        </button>
+                                    </span>
+                                    </form>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('type.edit',['type'=>$type->id]) }}" style="margin-left: 10px;">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                        <span style="padding-left: 5px;">編輯分類</span>
+                                    </a>
+                                </div>
+                            @endif
                          @endif
 
                     @elseif(isset($keyword))
@@ -56,6 +60,9 @@
                         <div class="panel-body">
                             <div class="container-fluid" style="padding:0;">
                                 <div class="row">
+                                    <div class="col-md-8">
+                                        {{ $post->author->name }} 在 {{ $post->created_at }} 發佈
+                                    </div>
                                     <div class="col-md-12">
                                         <h1 style="margin-top:0;">{{ $post->title }}</h1>
                                     </div>
@@ -79,6 +86,7 @@
                                 <div class="row" style="margin-top:10px;">
                                     <div class="col-md-8">
                                         @if(Auth::check())
+                                            @if(Auth::user()->id == $post->user_id )
                                                 <form method="POST" action="{{ route('post.destroy',['post'=>$post->id]) }}">
 
                                                     <span style="padding-left: 10px;">
@@ -95,7 +103,24 @@
                                                     </button>
                                                 </span>
                                                 </form>
-                                         @endif
+                                            @elseif ( Auth::user()->isAdmin())
+                                                <form method="POST" action="{{ route('post.destroy',['post'=>$post->id]) }}">
+                                                    <span>{{ $post->comments->count() }}&nbsp;則留言</span>
+                                                    <span style="padding-left: 10px;">
+
+                                                    <input type="hidden" name="_method" value="DELETE" />
+                                                    <button type="submit" class="btn btn-xs btn-danger">
+                                                        <i class="glyphicon glyphicon-trash"></i>
+                                                        <span style="padding-left: 5px;">刪除評論</span>
+                                                    </button>
+                                                </span>
+                                                </form>
+                                            @else
+                                                <span>{{ $post->comments->count() }}&nbsp;則留言</span>
+                                            @endif
+                                        @else
+                                            <span>{{ $post->comments->count() }}&nbsp;則留言</span>
+                                        @endif
                                     </div>
                                     <div class="col-md-4">
                                         <a href="{{ route('post.show',['post'=>$post->id]) }}" class="pull-right">繼續閱讀...</a>
@@ -117,7 +142,9 @@
                     </a>
                 @endforeach
                 @if(Auth::check())
-                    <a href="{{ route('type.create') }}" class="list-group-item">建立店家分類</a>
+                    @if(Auth::user()->isAdmin())
+                        <a href="{{ route('type.create') }}" class="list-group-item">建立店家分類</a>
+                    @endif
                 @endif
             </div>
         </div>
